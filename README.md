@@ -2,7 +2,8 @@
 
 Bu web uygulaması, harita üzerinde seçilen noktalar arasındaki yükseklik verilerini Google Maps Elevation API kullanarak alır ve interaktif bir kesit profili oluşturur.
 
-![Kesit Alma Uygulaması](screenshot.png)
+<img width="1675" alt="image" src="https://github.com/user-attachments/assets/d27cb4a4-812a-4cf4-b276-964fd6c2620f" />
+
 
 ## 🌟 Özellikler
 
