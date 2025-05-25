@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenLayers Kesit Uygulaması</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <style>
+        html, body { height: 100%; margin: 0; }
+        #container { display: flex; height: 100vh; }
+        #panel {
+            width: 340px;
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+        #map { flex: 1; }
+        #coordinatesList { font-size: 12px; margin-top: 10px; max-height: 120px; overflow-y: auto; }
+        .btn { margin: 5px 0; }
+        .modal-backdrop { display: none !important; }
+        .modal-content { border-radius: 8px; }
+        #profileModal {
+            z-index: 1050;
+        }
+        #profileModal .modal-dialog {
+            position: fixed;
+            bottom: 0;
+            left: 340px;
+            right: 0;
+            margin: 0;
+            width: auto;
+            height: 400px;
+        }
+        #profileModal .modal-content {
+            height: 100%;
+            border-radius: 8px 8px 0 0;
+            border: none;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        #profileModal .modal-header {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #fff;
+        }
+        #profileModal .modal-body {
+            padding: 0;
+            height: calc(100% - 50px);
+            position: relative;
+        }
+        #profile-canvas {
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="panel">
+        <h4>Kesit Paneli</h4>
+        <button id="drawLineBtn" class="btn btn-primary btn-block">Haritadan Seç</button>
+        <div id="coordinatesList"></div>
+        <button id="getProfileBtn" class="btn btn-success btn-block" disabled>Kesit Oluştur</button>
+        <button id="clearBtn" class="btn btn-danger btn-block">Temizle</button>
+    </div>
+    <div id="map"></div>
+</div>
+
+<!-- Yükseklik Profili Paneli (harita üzerinde alt bant) -->
+<div id="profilePanel" style="display:none; position:fixed; left:340px; right:0; bottom:0; height:400px; background:rgba(255,255,255,0.97); box-shadow:0 -2px 10px rgba(0,0,0,0.1); border-radius:8px 8px 0 0; z-index:1050;">
+  <div style="padding:10px 15px; border-bottom:1px solid #e0e0e0; background:#fff; display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-size:18px;font-weight:bold;">Yükseklik Profili</span>
+    <button id="closeProfilePanel" type="button" class="close">&times;</button>
+  </div>
+  <div style="height:calc(100% - 50px); position:relative;">
+    <canvas id="profile-canvas"></canvas>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=elevation"></script>
+<script src="app.js"></script>
+<script src="map.js"></script>
+
+</body>
+</html>
